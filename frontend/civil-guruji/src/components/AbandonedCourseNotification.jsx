@@ -6,7 +6,7 @@ const AbandonedCourseNotification = () => {
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
-    const socket = io('http://localhost:3001', {
+    const socket = io('https://civil-guruji-hzoz.onrender.com', {
       withCredentials: true,
       extraHeaders: {
         'Access-Control-Allow-Origin': 'http://localhost:3000',

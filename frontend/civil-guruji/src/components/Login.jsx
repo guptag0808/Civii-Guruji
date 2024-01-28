@@ -14,7 +14,7 @@ function Login() {
   };
   const postFun=()=>{
     
-    fetch("http://localhost:3001/auth/login",{
+    fetch("https://civil-guruji-hzoz.onrender.com/auth/login",{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

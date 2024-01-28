@@ -7,7 +7,7 @@ function Home() {
   const navigate=useNavigate()
   const checkoutButton=()=>{
    
-    fetch("http://localhost:3001/payment/checkout",{
+    fetch("https://civil-guruji-hzoz.onrender.com/payment/checkout",{
       method:"POST",
       headers:{
         'Authorization': localStorage.getItem('Token'),

@@ -5,7 +5,7 @@ const InactiveUsersNotification = () => {
   const [notification, setNotification] = useState(null);
   const user= JSON.parse(localStorage.getItem('user'))
   useEffect(() => {
-    const socket = io('http://localhost:3001', {
+    const socket = io('https://civil-guruji-hzoz.onrender.com', {
       withCredentials: true,
       extraHeaders: {
         'Access-Control-Allow-Origin': 'http://localhost:3000',

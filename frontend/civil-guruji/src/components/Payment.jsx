@@ -5,7 +5,7 @@ function Payment() {
   const navigate= useNavigate()
   const postFun=()=>{
     
-    fetch("http://localhost:3001/payment/complete",{
+    fetch("https://civil-guruji-hzoz.onrender.com/payment/complete",{
       method:"PATCH",
       headers:{
         'Authorization': localStorage.getItem('Token'),
