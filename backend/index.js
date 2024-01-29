@@ -16,17 +16,16 @@ app.use(express.json());
 
 app.use("/auth",userRouter)  
 app.use("/payment",paymentRouter)        
-  
+// it will call sendInactiveUsersNotification at 10:00 Am
 const jobInactiveUsers = new cron.CronJob('0 10 * * *', sendInactiveUsersNotification(io));
 jobInactiveUsers.start();
-// 30 10 * * *     
-// '0 0 * * *'
+// it will call sendAbandonedCourseNotification at 10:00 Am
 const jobAbandonedCourses = new cron.CronJob('0 10 * * *', sendAbandonedCourseNotification(io));
 jobAbandonedCourses.start();   
  
 io.on('connection', (socket) => {
   console.log('A user connected');
-  // You can handle more socket events here
+ 
 });
    
 server.listen(PORT, async() => {

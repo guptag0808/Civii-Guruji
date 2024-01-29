@@ -42,8 +42,7 @@ require('dotenv').config()
   userRouter.post('/login', async (req, res) => {
 	const { email, password } = req.body;
      const lastActive= new Date(Date.now())
-	//  console.log(Date.now())
-	//  console.log(lastActive)
+
 	try {
 	  const user = await UserModel.findOne({ email });
             
@@ -60,7 +59,7 @@ require('dotenv').config()
 		{ new: true }
 	  )
 	  const token = jwt.sign({ userId: user._id }, process.env.key, {
-		expiresIn: '5d', // Token expires in 1 hour
+		expiresIn: '5d', // Token expires in 5 days
 	  });
        const {_id,name}= user
 	  res.status(200).send({ "msg":"Login Successfull","Token":token, user:{_id,name}});

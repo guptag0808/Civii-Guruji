@@ -3,6 +3,8 @@ const nodemailer = require('nodemailer');
 const {UserModel} = require("../models/userModel")
 const {PaymentModel} = require("../models/paymentModel")
 require('dotenv').config()
+
+//Node Mailer setup 
 const transporter = nodemailer.createTransport({
   service:"gmail",
    auth: { 
@@ -10,6 +12,8 @@ const transporter = nodemailer.createTransport({
       pass: process.env.mailKey,
   }
 }); 
+
+//checking user Active time and send mail and notification to user
 const sendInactiveUsersNotification = (io) => async () => {
   try {
     const inactiveUsers = await UserModel.find({ lastActive: { $lt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) } });
@@ -40,7 +44,7 @@ const sendInactiveUsersNotification = (io) => async () => {
     console.error('Error sending inactive users notification:', error);
   }
 }
- 
+ // cheking user payment done or pending and send Notification and mail to user who went for checkout but havent comptete their payemnt after 5 days
 const sendAbandonedCourseNotification = (io) => async () => {
   try {
     const abandonedCoursesUsers = await PaymentModel.find({

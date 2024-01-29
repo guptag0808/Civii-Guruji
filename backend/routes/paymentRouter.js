@@ -2,6 +2,8 @@ const express= require("express")
 const {authentication} = require("../middleware/authentication")
 const paymentRouter= express.Router()
 const {PaymentModel} =require("../models/paymentModel")
+
+
 paymentRouter.post("/checkout",authentication,async(req,res)=>{
 	const user=req.user
 	const checkOutTime = new Date(Date.now())
@@ -9,10 +11,10 @@ paymentRouter.post("/checkout",authentication,async(req,res)=>{
 		const isUserAlreadyPresent = await PaymentModel.findOne({
 			user: user._id,
 			visitedCheckoutPage: true,   
-		  });
+		  }); 
 		if(!isUserAlreadyPresent){
 			const paymentUpdate= new PaymentModel({visitedCheckoutPage:true,checkOutTime,user})
-			await paymentUpdate.save()
+			await paymentUpdate.save() // user is not present with similar product then add user data with payment model
 		}
         res.status(200).send({"msg":"Procced to checkout"})
 	}catch(err){

@@ -37,17 +37,17 @@ function Home() {
     <div className="col s12 m7">
       <div className="card">
         <div className="card-image">
-          <img src="images/sample-1.jpg" />
+          <img src="https://jamesclear.com/wp-content/uploads/2019/02/atomic-habits_gallery_hi-res_04.jpg" />
           <span className="card-title">Card Title</span>
         </div>
         <div className="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <p>Books to improve your small habits every days.</p>
+          <p>Rs.230</p>
         </div>
         <div className="card-action">
         <Link to="/payment">
         <button className="btn waves-effect waves-light"   onClick={()=>checkoutButton()}>
-        Signup
+        Buy Now
       </button>
       </Link>
        
